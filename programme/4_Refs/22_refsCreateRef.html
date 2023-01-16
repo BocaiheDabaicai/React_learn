@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Programme_022</title>
+    </head>
+    <body>
+        <div id="test"></div>
+        <script type="text/javascript" src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+        <script type="text/javascript" src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+        <script type="text/javascript" src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+        <script type="text/babel">
+            class Inmessage extends React.Component{
+                /* React.createRef()方法为官方推荐的使用ref的方法，
+                  主要创建一个容器供对象使用，但是ref对应唯一的一个容器
+                  
+                  通过onXxx()属性指定事件处理函数(注意大小写)
+                    1.React使用的是自定义事件，而不是使用的原生DOM事件 ————为了更好的兼容性
+                    2.React中的事件是通过实践委托方处理的(委托给组件最外层的元素) ————为了高效
+                  通过event.target得到事件的DOM元素对象
+                    例：
+                    employdata=(event)=>{
+                        alert(event.target.value)
+                }
+                  */
+                myRef=React.createRef()
+                myRef2=React.createRef()
+                
+                showdata=()=>{
+                    alert(this.myRef.current.value)
+                }
+                employdata=()=>{
+                    alert(this.myRef2.current.value)
+                }
+                render(){
+                    return(
+                        <div>
+                            <input ref={this.myRef} type="text" placeholder="点击按钮提示数据"/>&nbsp;
+                            <button onClick={this.showdata}>点我提示左侧数据</button>&nbsp;
+                            <input ref={this.myRef2} type="text" onBlur={this.employdata} placeholder="失去焦点显示数据"/> 
+                        </div>
+                    )
+                }
+            }
+            ReactDOM.render(<Inmessage/>,document.getElementById('test'))
+        </script>
+    </body>
+</html> 

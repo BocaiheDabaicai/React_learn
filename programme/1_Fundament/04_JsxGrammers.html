@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>programming_004</title>
+        <style>
+            .title{
+                background-color: rgb(170, 253, 191);
+                width: 200px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="test"></div>
+        <script type="text/javascript" src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+        <script type="text/javascript" src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+        <script type="text/javascript" src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+        <script type="text/babel">  //class 表示样式
+            const myID='Atguigu'
+            const myData='hello,react'
+            const VDOM = (  
+                <div>
+                    <h2 className="title" id={myID.toLowerCase()}>  
+                    <span style={{color:'white',fontsize:'25px'}}>{myData.toLocaleLowerCase()}</span>
+                    </h2>
+                    <h2 className="title" id={myID.toUpperCase()}>  
+                    <span style={{color:'white',fontsize:'25px'}}>{myData.toUpperCase()}</span>
+                    </h2>
+                    <input type="text"/>
+                    <good>小写字母</good>
+                </div>    
+            )
+            ReactDOM.render(VDOM,document.getElementById('test'))
+            /* 
+                语法规则：
+                1. 利用 const 定义变量
+                2. 使用变量需加{}
+                3. className 是正确的样式名字
+                4. 内联样式 语法 style={{key:value}}
+                5. 虚拟DOM只能拥有一个根标签
+                6. VDOM里的内部标签必须闭合,input有两种自闭合方式
+                7. 标签首字母，
+                    （1）.小写字母，将该标签与HTML里的标签进行识别，成功就将该标签转化为HTML标签，否则报错
+                    （2）.大写字母，React会渲染对应的组件，若未定义，则报错
+            */
+        </script>
+    </body>
+</html> 

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Test_002</title>
+    </head>
+    <body>
+        <div id="test"></div>
+        <script type="text/javascript" src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+        <script type="text/javascript" src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+        <script type="text/javascript" src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+        <script type="text/babel">
+            const VDOM = <h1>Hello,React</h1>
+            ReactDOM.render(VDOM,document.getElementById('test'))
+        </script>
+        <button id='bt1'>按钮1</button>
+        <button id='bt2'>按钮2</button>
+        <button id='bt3' onclick='demo()'>按钮3</button>
+        <script type="text/javascript">
+            const bt1=document.getElementById('bt1')
+            bt1.addEventListener('click',()=>{
+                alert('被点击了1')
+            })
+
+            const bt2=document.getElementById('bt2')
+            bt2.onclick=()=>{
+                alert('被点击了2')
+            }
+
+            function demo(){
+                alert('被点击了3')
+            }
+        </script>
+    </body>
+</html> 

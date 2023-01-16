@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Programme_020</title>
+    </head>
+    <body>
+        <div id="test"></div>
+        <script type="text/javascript" src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+        <script type="text/javascript" src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+        <script type="text/javascript" src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+        <script type="text/babel">
+            class Inmessage extends React.Component{
+                showdata=()=>{
+                    const {input1}=this
+                    alert(input1.value)
+                }
+                employdata=()=>{
+                    const {input2}=this
+                    alert(input2.value)
+                }
+                //标准形式写法，ref={(c)=>{this.input1=c}}
+                //以下展示的是精简版写法
+                //总结：创建一个对象c，this产生一个对象input1回调c，作用在于能够使用类中的回调函数
+                render(){
+                    return(
+                        <div>
+                            <input ref={c=>this.input1=c} type="text" placeholder="点击按钮提示数据"/>&nbsp;
+                            <button onClick={this.showdata}>点我提示左侧数据</button>&nbsp;
+                            <input ref={c=>this.input2=c} type="text" onBlur={this.employdata} placeholder="失去焦点显示数据"/> 
+                        </div>
+                    )
+                }
+            }
+            ReactDOM.render(<Inmessage/>,document.getElementById('test'))
+        </script>
+    </body>
+</html> 

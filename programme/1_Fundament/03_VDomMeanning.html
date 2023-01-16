@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>programming_003</title>
+    </head>
+    <body>
+        <div id="test"></div>
+        <script type="text/javascript" src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+        <script type="text/javascript" src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+        <script type="text/javascript" src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+        <script type="text/babel">
+            const VDOM = (  
+                <h1 id='title'>
+                    <span>Hello,React</span>
+                </h1>)
+            ReactDOM.render(VDOM,document.getElementById('test'))
+            console.log('虚拟DOM',VDOM);
+            console.log(typeof VDOM);
+            console.log(VDOM instanceof Object);
+        </script>
+        /* 
+            关于虚拟DOM:
+            1.属于Object类型的对象
+            2.相比于真实DOM来说，内部属性更少（更加轻便）
+        */
+    </body>
+</html> 

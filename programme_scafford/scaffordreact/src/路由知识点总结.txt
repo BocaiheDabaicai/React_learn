@@ -1,0 +1,27 @@
+一般组件与路由组件的区别：
+    1.存放文件夹不同
+        一般组件存放在components
+        路由组件存放在pages
+    2.表达式不同
+        一般组件:<Demo/>
+        路由组件:<Route path="/demo" component={Demo}/>
+    3.接收到的props不同:
+        一般组件：写标签时传递了什么，就能收到什么
+        路由组件：接收到三个固定的属性
+                history:
+                        go: ƒ go(n)
+                        goBack: ƒ goBack()
+                        goForward: ƒ goForward()
+                        push: ƒ push(path, state)
+                        replace: ƒ replace(path, state)
+                location:
+                        pathname: "/about"
+                        search: ""
+                        state: undefined                        
+                match:
+                        params: {}
+                        path: "/about"
+                        url: "/about"                        
+标签体内容是特殊的标签属性，
+<MyNavLink to="/about">About</MyNavLink>
+标签        标签属性    标签体内容 

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+        let obj={a:{b:{c:1}}}
+        console.log(obj.a.b.c)
+        const {a:{b:{c}}}=obj
+        console.log(c)
+        const {a:{b:{c:data}}}=obj  //因为c没有data,所以c被更替为data
+        console.log(data)
+    </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>programming_005</title>
+    </head>
+    <body>
+        <div id="test"></div>
+        <script type="text/javascript" src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+        <script type="text/javascript" src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+        <script type="text/javascript" src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+        <script type="text/babel">
+            /* 
+                JS语句与JS表达式
+                1.表达式：一个表达式会产生一个值，可以放在任何需要值的地方
+                    例如：
+                        （1）a
+                        （2）a+b
+                        （3）demo（1） 函数返回值
+                        （4）arr.map（） 方法调用
+                        （5）function test（）{} 定义函数
+                2.语句：选择结构（If、switch）、循环结构（For、while）
+            */
+            const data=['Angular','React',,'Vue']
+            const VDOM=(
+                <div>
+                    <h1>前端列表框架</h1>
+                    <ul>
+                    {
+                        data.map((item,index)=>{return <li key={index}>{item}</li>})
+                    }
+                    </ul>    
+                </div>
+            )
+            /*(
+                <div>
+                    <h1>前端JS框架列表</h1>
+                    <ul>
+                        <li>Angular</li>
+                        <li>React</li>
+                        <li>Vue</li>    
+                    </ul>    
+                </div>
+            )*/
+            ReactDOM.render(VDOM,document.getElementById('test'))
+        </script>
+    </body>
+</html> 

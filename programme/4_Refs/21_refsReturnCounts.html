@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Programme_021</title>
+    </head>
+    <body>
+        <div id="test"></div>
+        <script type="text/javascript" src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+        <script type="text/javascript" src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+        <script type="text/javascript" src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+        <script type="text/babel">
+            class Inmessage extends React.Component{
+                state={isHot:true}
+                showdata=()=>{
+                    const {input1}=this
+                    alert(input1.value)
+                }
+                changeWeather=()=>{
+                    const {isHot}=this.state
+                    this.setState({isHot:!isHot})
+                }
+                saveInput=()=>{
+                    this.input1=c
+                    console.log('@',c)
+                }
+                /* 每当点击一次切换状态按钮，都会使得render方法重新调用一次，
+                而ref标签就会先将之前的内容清空在重新执行{}中的内容，也就是会调用两次ref */
+                render(){
+                    const {isHot}=this.state
+                    return(
+                        <div>
+                            <h2>今天天气很{isHot?'炎热':'凉爽'}</h2>
+                            {/*ref对应的{}为内联函数，此为常用方法*/}
+                            <input ref={(c)=>{this.input1=c,console.log('@',c)}} type="text" placeholder="点击按钮提示数据"/>&nbsp;
+                            {/*ref对应的{}为回调函数，回调函数不触发两次调用
+                            <input ref={this.saveInput} type='text'/>*/}
+                            <button onClick={this.showdata}>点我提示左侧数据</button>&nbsp;
+                            <button onClick={this.changeWeather}>点我切换天气状态</button>
+                        </div>
+                    )
+                }
+            }
+            ReactDOM.render(<Inmessage/>,document.getElementById('test'))
+        </script>
+    </body>
+</html> 

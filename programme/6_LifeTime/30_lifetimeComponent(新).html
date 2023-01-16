@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Programme_030</title>
+    </head>
+    <body>
+        <div id="test"></div>
+        <script type="text/javascript" src="https://unpkg.com/react@17.0.1/umd/react.development.js" crossorigin></script>
+        <script type="text/javascript" src="https://unpkg.com/react-dom@17.0.1/umd/react-dom.development.js" crossorigin></script>
+        <script type="text/javascript" src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+        <script type="text/babel">
+            class Count extends React.Component{
+                constructor(props){
+                    console.log('count---constructor')
+                    super(props)
+                    this.state={count:0}
+                }
+                
+                add=()=>{
+                    const {count}=this.state
+                    this.setState({count:count+1})
+                }
+                download=()=>{
+                    ReactDOM.unmountComponentAtNode(document.getElementById('test'))
+                }
+                force=()=>{
+                    this.forceUpdate()
+                }
+                //新版本钩子
+                //必须为静态方法，且返回值 (props表示接受到的状态，state表示类中初始化的状态)
+                static getDerivedStateFromProps(props,state){
+                    console.log('count---getDerivedStateFromProps',props,state)
+                    return null
+                }
+                //组件更新之前，传递任意值
+                getSnapshotBeforeUpdate(){
+                    console.log('count---getSnapshotBeforeUpdate')
+                    return '788995666@163.com'
+                }
+                //生命周期的测试，俗称钩子
+                //mount 挂载组件，update 更新组件
+                componentDidMount(){
+                    console.log('count---componentDidMount')
+                }
+                //控制组件更新的钩子，必须有返回值
+                shouldComponentUpdate(){
+                    console.log('count---shouldComponentUpdate')
+                    return true
+                }
+
+                componentDidUpdate(prevProps,prevState,snapshotValue){
+                    console.log('count---componentDidUpdate',prevProps,prevState,snapshotValue)
+                }
+                render(){
+                    console.log('count---render')
+                    const {count}=this.state
+                    return (
+                        <div>
+                            <h2>当前数字为：{count}</h2>
+                            <button onClick={this.add}>点我+1</button>
+                            <button onClick={this.download}>卸载组件</button>
+                            <button onClick={this.force}>强制更新</button>
+                        </div>
+                    )
+                }
+            }
+            ReactDOM.render(<Count count={128}/>,document.getElementById('test'))
+        </script>
+    </body>
+</html> 

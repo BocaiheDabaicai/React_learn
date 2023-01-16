@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //声明变量
+        //let fn=function(){} 过去
+        let fn =(a,b)=>{
+            return a+b
+        }
+        let result=fn(1,2)
+        console.log(result)
+        //1.this是静态的,this始终指向函数声明时所在作用域下的this值
+        function getName(){
+            console.log(this.name)
+        }
+        let getName2=()=>{
+            console.log(this.name)
+        }
+        window.name='oppo'
+        const school={
+            name:'watch 2 pro'
+        }
+        //直接调用
+        getName()
+        getName2()
+        //call调用
+        getName.call(school)
+        getName2.call(school)
+        //2.不能作为构造实例化的对象
+        //3.不能使用arguments变量
+        //4.箭头函数的省略
+        /*
+            省略小括号，当形参只有一个
+            省略花括号，当代码体只有一条语句的时候，同时return必须省略
+        */
+        let add= n=> n*n
+        console.log(add(5))
+    </script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <script src="./node_modules/axios/dist/mine-axios.js"></script> -->
+</head>
+<body>
+    <script>
+        //console.log(axios);
+        function Axios(config){
+            this.defaults=config;//创建default默认属性
+            this.intercepter={
+                request:{},
+                response:{}
+            }
+        }
+        Axios.prototype.request=function(config){
+            console.log('发送 AJAX 请求 请求类型为'+config.method)
+        }
+        Axios.prototype.get=function(config){
+            return this.request({method:'GET'})
+        }
+        Axios.prototype.post=function(config){
+            return this.request({method:'POST'})
+        }
+        function createInstance(config){
+            //创建对象获取函数，以及函数身上的方法
+            let context =new Axios(config); //context不能当作函数使用
+            //创建请求函数
+            let instance=Axios.prototype.request.bind(context); //instance是一个函数并且可以使用instance({})
+            //将Axios.prototype对象上的方法添加到instance上
+            Object.keys(Axios.prototype).forEach(key=>{
+                instance[key]=Axios.prototype[key].bind(context)
+            })
+            //将default 和 interceptors 属性添加到instance函数对象上
+            Object.keys(context).forEach(key=>{
+                instance[key]=context[key];
+            })
+            // console.log(instance)
+            // console.dir(instance)
+            return instance
+        }
+        let axios =createInstance()
+        //发送请求，使用函数、使用方法
+        axios({method:'POST'})
+        axios.get()
+    </script>
+</body>
+</html>

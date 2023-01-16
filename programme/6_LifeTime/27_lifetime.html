@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Programme_027</title>
+    </head>
+    <body>
+        <div id="test"></div>
+        <script type="text/javascript" src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+        <script type="text/javascript" src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+        <script type="text/javascript" src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+        <script type="text/babel">
+            class Life extends React.Component{
+                state={opacity:1}
+                death=()=>{
+                    ReactDOM.unmountComponentAtNode(document.getElementById('test'))
+                }
+                componentDidMount(){
+                    this.timer=setInterval(() => {
+                        let{opacity}=this.state
+                        opacity-=0.05
+                        if(opacity<=0)opacity=1;
+                        this.setState({opacity})
+                    }, 100);
+                }
+                componentWillUnmount(){
+                    clearInterval(this.timer)
+                }
+                render(){
+                    return (
+                        <div>
+                        <h2 style={{opacity:this.state.opacity}}>React学不会怎么办？</h2>
+                        <button onClick={this.death}>办了它</button>    
+                        </div>
+                    )
+                }
+            }
+            ReactDOM.render(<Life/>,document.getElementById('test'))
+        </script>
+    </body>
+</html> 

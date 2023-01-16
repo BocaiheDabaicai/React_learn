@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Programme_017</title>
+    </head>
+    <body>
+        <div id="test1"></div>
+        <script type="text/javascript" src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+        <script type="text/javascript" src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+        <script type="text/javascript" src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+        <script type="text/javascript" src="../js/prop-types.js"></script>
+        <script type="text/babel">
+            class Person extends React.Component{
+                constructor(props){
+                    //使用构造器取决于是否要在构造器中通过this调用props
+                    //一般不需要写构造器
+                    super(props)
+                    console.log('constructor',this.props)
+                }                
+                //限制属性放在类中的写法
+                static propTypes={  //类型限制
+                name:PropTypes.string.isRequired,
+                sex:PropTypes.string,
+                age:PropTypes.number,
+                }
+                static defaultProps={   //默认值
+                    sex:'男',
+                    age:18
+                }
+                render(){
+                    console.log(this)
+                    const {name,sex,age}=this.props
+                    //this.props.name='jack'    如此书写会报错，因为props只可读，不可进行更改
+                    return (
+                        <ul>
+                            <li>姓名：{name}</li>
+                            <li>性别：{sex}</li>
+                            <li>年龄：{age+1}</li>
+                        </ul>
+                    )
+                }
+            }
+            ReactDOM.render(<Person name='qwe' sex='man' age={18}/>,document.getElementById('test1'))
+        </script>
+    </body>
+</html> 

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>programming_006</title>
+    </head>
+    <body>
+        <div id="test"></div>
+        <script type="text/javascript" src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+        <script type="text/javascript" src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+        <script type="text/javascript" src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+        <script type="text/babel">
+            function Demo(){    //babel
+                console.log(this); //此处的this是undefined,因为babel编译后开启了严格模式
+                return <h1>我是用函数定义的组件（适用于【简单组件】的定义）</h1>
+            }
+            ReactDOM.render(<Demo/>,document.getElementById('test'))
+            /*
+                执行了ReactDOM.render(<Demo/)之后，发生的事件如下：
+                    1.React解析标签组件，找到了MyComponent组件
+                    2.发现了组件使用函数定义的，随后调用该组件，将返回的虚拟DOM转为真实DOM，随后呈现在页面中
+            */
+        </script>
+    </body>
+</html> 

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Programme_014</title>
+    </head>
+    <body>
+        <div id="test1"></div>
+        <div id="test2"></div>
+        <script type="text/javascript" src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+        <script type="text/javascript" src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+        <script type="text/javascript" src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+        <script type="text/babel">
+            class Person extends React.Component{
+                render(){
+                    console.log(this)
+                    /*
+                    const {name,sex,age}=this.props
+                    表示形式可以变更为：
+                    {name}、{sex}、{age}
+                    */
+                    return (
+                        <ul>
+                            <li>姓名：{this.props.name}</li>
+                            <li>性别：{this.props.sex}</li>
+                            <li>年龄：{this.props.age}</li>
+                        </ul>
+                    )
+                }
+            }
+            ReactDOM.render(<Person name='qwe' sex='man' age='18'/>,document.getElementById('test1'))
+            ReactDOM.render(<Person name='asd' sex='woman' age='17'/>,document.getElementById('test2'))
+        </script>
+    </body>
+</html> 

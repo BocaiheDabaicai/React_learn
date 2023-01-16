@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <h2 class="page-header">点击切换颜色</h2>
+        <div class="item">No1</div>
+        <div class="item">No2</div>
+        <div class="item">No3</div>
+    </div>
+    <script>
+        //获取div元素
+        let items=document.getElementsByClassName('item')
+        //遍历并绑定事件
+        for(let i=0;i<items.length;i++){
+            items[i].onclick=function(){
+                //添加改变背景色的指示
+                //this.style.background='pink'
+                items[i].style.background='purple'  
+                //需注意,使用var声明i,语句无法生效，因为i的值定格为了3
+                //而使用let的话，就可以确定代码块下的let值与函数对应
+            }
+        }
+        /*
+        实现形式：
+        {let 1,fun 1}{let 2,fun 2}{let 3,fun 3}
+        */
+    </script>
+</body>
+</html>

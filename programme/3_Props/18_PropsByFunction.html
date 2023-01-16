@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Programme_018</title>
+    </head>
+    <body>
+        <div id="test1"></div>
+        <script type="text/javascript" src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+        <script type="text/javascript" src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+        <script type="text/javascript" src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+        <script type="text/javascript" src="../js/prop-types.js"></script>
+        <script type="text/babel">
+            //function只能使用props组件
+            function Person(props){
+               const {name,sex,age}=props
+                return (
+                        <ul>
+                            <li>姓名：{name}</li>
+                            <li>性别：{sex}</li>
+                            <li>年龄：{age}</li>
+                        </ul>
+                    )
+            }
+            //限制属性放在类中的写法
+            Person.propTypes={  //类型限制
+            name:PropTypes.string.isRequired,
+            sex:PropTypes.string,
+            age:PropTypes.number,
+            }
+            Person.defaultProps={   //默认值
+               sex:'男',
+               age:18
+            }
+            ReactDOM.render(<Person name='qwe' sex='man' age={18}/>,document.getElementById('test1'))
+        </script>
+    </body>
+</html> 

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //声明变量
+        let a
+        let q,b,c
+        let e=100
+        let f=500,g='chongqing',h=[]
+        //1.变量不可以重复声明,但 var 可以重复声明。
+        // let opo='bob'
+        // let opo='cdc'
+        //2.块级作用域 全局,函数,eval
+        //if else while for ,在作用域内有效
+        // {
+        //     let girl='dicy'     //var 类型数据可以进行输出,因为var类型数据没有块级作用域
+        // }
+        // console.log(girl)
+        //3.不存在变量提升
+        // console.log(abc)
+        // let abc='ddffa'
+        //4.不影响作用域链
+        {
+            let school='自强不息'
+            function fn(){
+                console.log(school)
+            }
+            fn()
+        }
+    </script>
+</body>
+</html>

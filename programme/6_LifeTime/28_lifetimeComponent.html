@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Programme_028</title>
+    </head>
+    <body>
+        <div id="test"></div>
+        <script type="text/javascript" src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+        <script type="text/javascript" src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+        <script type="text/javascript" src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+        <script type="text/babel">
+            class Count extends React.Component{
+                constructor(props){
+                    console.log('count---constructor')
+                    super(props)
+                    this.state={count:0}
+                }
+                
+                add=()=>{
+                    const {count}=this.state
+                    this.setState({count:count+1})
+                }
+                download=()=>{
+                    ReactDOM.unmountComponentAtNode(document.getElementById('test'))
+                }
+                force=()=>{
+                    this.forceUpdate()
+                }
+                //生命周期的测试，俗称钩子
+                //mount 挂载组件，update 更新组件
+                componentWillMount(){
+                    console.log('count---componentWillMount')
+                }
+                componentDidMount(){
+                    console.log('count---componentDidMount')
+                }
+                componentWillUnmount(){
+                    console.log('count---componentWillUnmount')
+                }
+                //控制组件更新的钩子，必须有返回值
+                shouldComponentUpdate(){
+                    console.log('count---shouldComponentUpdate')
+                    return true
+                }
+                componentWillUpdate(){
+                    console.log('count---componentWillUpdate')
+                }
+                componentDidUpdate(){
+                    console.log('count---componentDidUpdate')
+                }
+                render(){
+                    console.log('count---render')
+                    const {count}=this.state
+                    return (
+                        <div>
+                            <h2>当前数字为：{count}</h2>
+                            <button onClick={this.add}>点我+1</button>
+                            <button onClick={this.download}>卸载组件</button>
+                            <button onClick={this.force}>强制更新</button>
+                        </div>
+                    )
+                }
+            }
+            ReactDOM.render(<Count/>,document.getElementById('test'))
+        </script>
+    </body>
+</html> 

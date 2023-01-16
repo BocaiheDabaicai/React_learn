@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Programme_033</title>
+    </head>
+    <body>
+        <div id="test"></div>
+        <script type="text/javascript" src="https://unpkg.com/react@17.0.1/umd/react.development.js" crossorigin></script>
+        <script type="text/javascript" src="https://unpkg.com/react-dom@17.0.1/umd/react-dom.development.js" crossorigin></script>
+        <script type="text/javascript" src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+        <script type="text/babel">
+           /*
+                在现实开发当中，索引值使用唯一的标识符
+                在研究问题上，index可以做为索引值使用
+           */
+            class Person extends React.Component{
+                state={
+                    persons:[
+                        {id:1,name:'小李',age:18},
+                        {id:2,name:'小张',age:19}
+                    ]
+                }
+                add=()=>{
+                    const {persons}=this.state
+                    const p={id:persons.length+1,name:'小王',age:20}
+                    this.setState({persons:[p,...persons]})
+                }
+                render(){
+                    return (
+                        <div>
+                        <h2>展示人员信息</h2>
+                        <button onClick={this.add}>添加一个成员</button>
+                        <h3>用index作为索引值</h3>
+                            <ul>
+                                {
+                                    this.state.persons.map((presonObj,index)=>{
+                                        return <li key={index}>{presonObj.name}----{presonObj.age}</li>
+                                    })
+                                }
+                            </ul>
+                        <hr/>
+                        <hr/>
+                        <h3>用id作为索引值</h3>
+                        <ul>
+                                {
+                                    this.state.persons.map((presonObj)=>{
+                                        return <li key={presonObj.id}>{presonObj.name}----{presonObj.age}</li>
+                                    })
+                                }
+                            </ul>
+                        </div>
+                    )
+                }
+            }
+            ReactDOM.render(<Person/>,document.getElementById('test'))   
+        </script>
+    </body>
+</html> 

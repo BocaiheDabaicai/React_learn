@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Test_001</title>
+    </head>
+    <body>
+        <script type="text/javascript">
+            let arr1=[1,3,5,7,9]
+            let arr2=[2,4,6,8,10]
+            console.log(...arr1)    //输出一个数组
+            let arr3=[...arr1,...arr2]  //合并数组
+            console.log(...arr3)
+
+            function sum(...numbers){   //在函数当中使用
+                return numbers.reduce((preValue,currentValue)=>{
+                    return preValue+currentValue
+                })
+            }
+            console.log(sum(1,2,3,4))
+
+            let person1={name:'qwe',age:18}
+            let person2={...person1}    //复制数组内容
+            person1.name='asd'
+            console.log(person2)
+            console.log(person1)
+        </script>
+    </body>
+</html> 
